@@ -9,10 +9,10 @@
   <h1>Login</h1>
   <form method="POST">
     {% csrf_token %}
-    {{ login_form|crispy }}
+    {{ form|crispy }}
     <button class="btn btn-primary mt-3" type="submit">Login</button>
   </form>
-  <p class="text-center">No tiene cuenta? <a href="../register">Create una aqui</a>.</p>
+  <p class="text-center">No tiene cuenta? <a href="{% url 'registro' %}">Cree una aqui</a>.</p>
 </div>
 
 {% endblock %}

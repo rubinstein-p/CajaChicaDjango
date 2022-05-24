@@ -1,9 +1,7 @@
-from django.contrib import admin
-from django.shortcuts import redirect
 from django.urls import path, include
-from . import views
+from .views import VRegistro,VLogin
 
 urlpatterns = [
-    path('', views.Vregister, name='register'),
-    #  path('login/', views.Vlogin,  name='login'),
+    path('register/', VRegistro.as_view(), name='register'),
+    path('login/', VLogin.as_view(),  name='login'),
 ]

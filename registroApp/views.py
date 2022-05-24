@@ -7,14 +7,26 @@ from django.views.generic import View
 
 # Create your views here.
 
-def Vregister(View):
+class VRegistro(View):
 
 	def get(self, request):
 		form=UserCreationForm()
-		return render(request, "register/register.html", {"form":form})
+		return render(request, "registerApp/register.html", {"form":form})
 
 	def post(self, request):
 		pass
+
+
+
+class VLogin(View):
+	def get(self, request):
+		form=UserCreationForm()
+		return render(request, "registerApp/login.html", {"form":form})
+
+	def post(self, request):
+		pass
+
+
 		# form=UserCreationForm(request.POST)
 		# if form.is_valid():
 		# 	usuario = form.save()

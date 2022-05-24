@@ -25,8 +25,18 @@
         <span class="site-heading-lower">CAJA CHICA Y GASTOS</span>
     </h3>
 
-    <div align="right" style="color:white;"> 
-      <a href="/autenticacion/login/" style="color:black;"> Login </a> / <a href="/autenticacion/register/" style="color:black;"> Registrase</a>
+    
+      {% if user.is_authenticated %}
+        <div align="right" style="color:black;">
+          Hola {{ user.username }} &nbsp;&nbsp;-&nbsp;&nbsp; <a href="{% url 'cerrar_sesion' %}" style="color:black;"> Cerrar Sesión </a>
+        </div>
+      {% else %}
+        <div align="right" style="color:black;">
+          <a href="/autenticacion/login/" style="color:black;"> Login </a> / 
+          <a href="/autenticacion/registro/" style="color:black;"> Registrase</a>
+        </div>
+      {% endif %}
+
     </div>
      <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark  bg-primary py-lg-4" id="mainNav">
@@ -38,11 +48,14 @@
                     <a class="nav-link text-uppercase text-expanded" href="{% url 'home' %}">Inicio</a>
                 </li>
                 <li class="nav-item {% if request.path == '/servicios/' %}active{% endif %} px-lg-4">
-                    <a class="nav-link text-uppercase text-expanded" href="">CARGAR FACTURA</a>
+                    <a class="nav-link text-uppercase text-expanded" href="#">CARGAR FACTURA</a>
                 </li>
                 <li class="nav-item {% if request.path == '/tienda/' %}active{% endif %} px-lg-4">
-                    <a class="nav-link text-uppercase text-expanded" href="">REPORTES</a>
+                    <a class="nav-link text-uppercase text-expanded" href="#">REPORTES</a>
                 </li>
+                <li class="nav-item {% if request.path == '/cambiar/' %}active{% endif %} px-lg-4">
+                  <a class="nav-link text-uppercase text-expanded" href="{% url 'cambiar' %}">CAMBIAR CONTRASEÑA</a>
+              </li>
               </ul>
           </div>
         </div>
